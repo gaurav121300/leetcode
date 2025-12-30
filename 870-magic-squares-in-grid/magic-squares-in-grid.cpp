@@ -9,7 +9,7 @@ public:
         for(int i = r;i< r + 3;i++){
             for(int j = c; j< c + 3 ; j++){
                 int val = grid[i][j];
-                if(val < 1 || val > 9 || freq[val]++){
+                if(val < 1 || val > 9 ||freq[val]++){
                     return false;
                 }
             }
