@@ -2,7 +2,7 @@ class Solution {
 public:
     int repeatedNTimes(vector<int>& nums) {
         unordered_map<int,int>mpp;
-        for(int num : nums){
+        for(auto num : nums){
             mpp[num]++;
         }
         for(auto it = mpp.begin();it != mpp.end();it++){
