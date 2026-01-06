@@ -19,6 +19,7 @@ public:
         int sum = 0;
         int maxSum = INT_MIN;
         int level = 0;
+        int newLevel = 0; 
         q.push(root);
         vector<int> ans;
         while (!q.empty()) {
@@ -33,14 +34,13 @@ public:
                 if (front->right)
                     q.push(front->right);
             }
-            ans.push_back(sum);
-            sum = 0;
-        }
-        for(int i = 0;i<ans.size();i++){
-            if(ans[i] > maxSum){
-                maxSum = ans[i];
-                level = i+1;
+           
+            if(sum > maxSum){
+                maxSum = sum;
+                level = newLevel + 1;
             }
+            newLevel++;
+            sum = 0;
         }
         return level;
     }
