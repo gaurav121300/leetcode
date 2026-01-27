@@ -11,9 +11,6 @@ public:
                     dp[i] = max(dp[i],dp[prev] + 1);
                 }
             }
-
-        }
-        for(int i = 0;i<n;i++){
             ans = max(ans,dp[i]);
         }
         return ans;
