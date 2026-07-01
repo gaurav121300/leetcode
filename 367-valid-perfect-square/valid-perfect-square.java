@@ -1,8 +1,13 @@
 class Solution {
     public boolean isPerfectSquare(int num) {
-        for(int i = 1 ; i <= Math.sqrt(num);i++){
-            if(i * i == num) return true;
-        }
-        return false;
+       return check(num,1);
+    }
+
+    boolean check(int num,int i){
+        if(i > Math.sqrt(num)) return false;
+
+        if(i * i == num) return true;
+
+        return check(num,i+1);
     }
 }
