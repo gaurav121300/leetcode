@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void solve(string &s, int index, vector<string> &ans) {
+    void solve(string s, int index, vector<string> &ans) {
 
         if (index == s.length()) {
             ans.push_back(s);
@@ -11,11 +11,9 @@ public:
             solve(s, index + 1, ans);
         } else {
 
-            // Lowercase
             s[index] = tolower(s[index]);
             solve(s, index + 1, ans);
-
-            // Uppercase
+ 
             s[index] = toupper(s[index]);
             solve(s, index + 1, ans);
         }
