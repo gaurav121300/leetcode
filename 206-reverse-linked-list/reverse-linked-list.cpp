@@ -10,38 +10,13 @@
  */
 class Solution {
 public:
-    ListNode* helper(ListNode* node, ListNode* &head){
-        if(node->next == NULL) {
-            head = node;
-            return node;
-        }
-
-        ListNode* x = helper(node->next,head);
-
-        x->next = node;
-        node->next=nullptr;
-        return node;
-    }
     ListNode* reverseList(ListNode* head) {
-        if(head==nullptr) return head;
-        ListNode* prev = NULL;
-         helper(head,prev);
-         return prev;
+        if(head == NULL || head->next == NULL) return head;
+        ListNode* newHead = reverseList(head->next);
+        ListNode* front = head->next;
+        front->next = head;
+        head->next = NULL;
+
+        return newHead;
     }
 };
-
-// class Solution {
-// public:
-//     ListNode* reverseList(ListNode* head) {
-//         ListNode* prev = NULL;
-//         ListNode* curr = head;
-
-//         while(curr != NULL){
-//             ListNode* nextNode = curr->next;
-//             curr->next = prev;
-//             prev = curr;
-//             curr = nextNode;
-//         }
-//         return prev;
-//     }
-// };
