@@ -5,33 +5,39 @@ public:
         int i = 0;
         int n = s.size();
 
-        // Step 1: Remove leading spaces
+        // 1. Skip leading spaces
         while (i < n && s[i] == ' ') {
             i++;
         }
 
-        // Step 2: Check sign
+        // 2. Check sign
         int sign = 1;
 
         if (i < n && s[i] == '-') {
             sign = -1;
             i++;
-        } else if (i < n && s[i] == '+') {
+        }
+        else if (i < n && s[i] == '+') {
             i++;
         }
 
-        // Step 3: Build number
-        int ans = 0;
+        // 3. Build the number
+        long long ans = 0;
 
         while (i < n && isdigit(s[i])) {
 
             int digit = s[i] - '0';
 
-            // Step 4: Check overflow
+            // 4. Check overflow BEFORE calculating ans
             int limit = (sign == 1) ? 7 : 8;
 
-            if (ans > INT_MAX / 10 || (ans == INT_MAX / 10 && digit > 7)) {
-                return sign == 1 ? INT_MAX : INT_MIN;
+            if (ans > INT_MAX / 10 ||
+                (ans == INT_MAX / 10 && digit > limit)) {
+
+                if (sign == 1)
+                    return INT_MAX;
+                else
+                    return INT_MIN;
             }
 
             ans = ans * 10 + digit;
@@ -39,6 +45,7 @@ public:
             i++;
         }
 
+        // 5. Apply sign
         return ans * sign;
     }
 };
